@@ -1,0 +1,21 @@
+.footer {
+    width: 950px;
+    margin: 0 auto;
+    color: #fff;
+    .footer-left {
+        width: 460px;
+        float: left;
+        p{
+            text-align: left;
+            padding-left: 10px;
+        }
+    }
+    .footer-right {
+        width: 460px;
+        float: right;
+        p{
+            text-align: left;
+            padding-left: 10px;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.content {
+    width: 400px;
+    height: 370px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 50px;
+    .p_underline {
+        border-bottom: 1px solid #EAE6E2;
+        text-align: left;
+    }
+    .p_span {
+        padding-left: 210px;
+    }
+    .textBox {
+        width: 300px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid #CCC;
+        padding-left: 10px;
+    }
+    .submitButton {
+        width: 310px;
+        height: 40px;
+        background-color: blue;
+        color: white;
+        border: 0px;
+        border-radius: 5px;
+    }
+}
