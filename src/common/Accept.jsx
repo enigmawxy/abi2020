@@ -11,14 +11,29 @@ function Accept(props) {
     isDragAccept,
     isDragReject
   } = useDropzone({
-    accept: 'image/jpeg, image/png'
+    accept: "application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   });
 
-  const acceptedFileItems = acceptedFiles.map(file => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+  const acceptedFileItems = acceptedFiles.map(file => {
+    // 上传文件
+    console.log(file);
+    let serverURL = "https://localhost:9093/manage/bi/uploadSecondExcel"
+    const xhr = new XMLHttpRequest();
+    const fd = new FormData();
+    xhr.addEventListener("load", null, false);
+    fd.append("file", file);
+    console.log("=======>" + this.state.token);
+    fd.append("token", this.state.token);
+    fd.append("type", this.state.uploadType);
+    xhr.open("POST", serverURL, true);
+    xhr.send(fd);
+
+    return (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    )
+  });
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>
@@ -39,7 +54,7 @@ function Accept(props) {
         {isDragReject && (<p>Some files will be rejected</p>)}
         {!isDragActive && (<p>Drop some files here ...</p>)}
         <p>Drag 'n' drop some files here, or click to select files</p>
-        <em>(Only *.jpeg and *.png images will be accepted)</em>
+        <em>(Only *.xls and *.xlsx file will be accepted)</em>
       </div>
       <aside>
         <h4>Accepted files</h4>
