@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    height: 300px;
+    margin-top: 30px;
+    .dropzone {
+        background: green;
+        border: 1px solid red;
+        text-align: center;
+        p, em {
+            color: black;
+        }
+    }
+}
+
+.progress-bar {
+    border: 1px solid #000;
+    .progress {
+        width: 0;
+        background: #DEDEDE;
+        height: 20px;
+    }
+}

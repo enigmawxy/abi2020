@@ -26,12 +26,13 @@ function Accept(props) {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
           console.log(xhr.responseText)
+          setInfo(xhr.responseText)   
       }
     };
 
     xhr.upload.addEventListener("progress", function(event) {
       if(event.lengthComputable){
-          //setProgress(Math.ceil(event.loaded * 100 / event.total) + "%")
+          setProgress(Math.ceil(event.loaded * 100 / event.total) + "%")
       }
     }, false);
 
@@ -79,11 +80,11 @@ function Accept(props) {
     <section className="container">
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
-        {isDragAccept && (<p>文件被接受</p>)}
-        {isDragReject && (<p>文件被拒收</p>)}
-        {!isDragActive && (<p>拖拽文件到这里 ...</p>)}
-        <p>或鼠标点击，通过对话框添加文件</p>
-        <em>(注意只接受Excel文件上传(*.xls and *.xlsx)</em>
+        {isDragAccept && (<p>All files will be accepted</p>)}
+        {isDragReject && (<p>Some files will be rejected</p>)}
+        {!isDragActive && (<p>Drop some files here ...</p>)}
+        <p>Drag 'n' drop some files here, or click to select files</p>
+        <em>(Only *.xls and *.xlsx file will be accepted)</em>
       </div>
       <aside>
         <h4>Accepted files</h4>

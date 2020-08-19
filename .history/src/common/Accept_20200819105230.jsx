@@ -82,7 +82,7 @@ function Accept(props) {
         {isDragAccept && (<p>文件被接受</p>)}
         {isDragReject && (<p>文件被拒收</p>)}
         {!isDragActive && (<p>拖拽文件到这里 ...</p>)}
-        <p>或鼠标点击，通过对话框添加文件</p>
+        <p>Drag 'n' drop some files here, or click to select files</p>
         <em>(注意只接受Excel文件上传(*.xls and *.xlsx)</em>
       </div>
       <aside>
