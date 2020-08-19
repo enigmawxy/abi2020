@@ -7,7 +7,6 @@ function Accept(props) {
   const [progress, setProgress] = useState({progress: "0%"})
   const [info, setInfo] = useState({info: ""})
   const [curr, setFile] = useState('')
-  const [currFile, setCurrFile] = useState(null)
 
   const {
     acceptedFiles,
@@ -22,38 +21,40 @@ function Accept(props) {
   });
   
   useEffect(()=>{
-    console.log(curr, currFile)
-    let serverURL = "http://localhost:9093/manage/bi/uploadExcelTest"
-    const xhr = new XMLHttpRequest();
-    const fd = new FormData();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText)
-          setInfo(xhr.responseText)   
-      }
-    };
+    // let serverURL = "http://localhost:9093/manage/bi/uploadExcelTest"
+    // const xhr = new XMLHttpRequest();
+    // const fd = new FormData();
+    // xhr.onreadystatechange = function() {
+    //   if (xhr.readyState === 4 && xhr.status === 200) {
+    //       console.log(xhr.responseText)
+    //       setInfo(xhr.responseText)   
+    //   }
+    // };
 
-    xhr.upload.addEventListener("progress", function(event) {
-      if(event.lengthComputable){
-          setProgress(Math.ceil(event.loaded * 100 / event.total) + "%")
-      }
-    }, false);
+    // xhr.upload.addEventListener("progress", function(event) {
+    //   if(event.lengthComputable){
+    //       setProgress(Math.ceil(event.loaded * 100 / event.total) + "%")
+    //   }
+    // }, false);
 
-    fd.append("file", currFile);
-    xhr.open("POST", serverURL, true);
-    xhr.send(fd); 
+    // fd.append("file", file);
+    // xhr.open("POST", serverURL, true);
+    // xhr.send(fd); 
+    console.log(curr)
   }, [curr])
   
   const acceptedFileItems = acceptedFiles.map(file => {
     // 上传文件
+    console.log(file);
+    
     if(curr == '') {
       setFile(file.name)
-      setCurrFile(file)
     }
     else {
-      if(curr !== file.name) { 
+      if(curr === file.name)
+        console.log('ignore')
+      else {
         setFile(file.name)
-        setCurrFile(file)
       }
     }
 

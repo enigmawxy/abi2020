@@ -22,26 +22,26 @@ function Accept(props) {
   });
   
   useEffect(()=>{
+    // let serverURL = "http://localhost:9093/manage/bi/uploadExcelTest"
+    // const xhr = new XMLHttpRequest();
+    // const fd = new FormData();
+    // xhr.onreadystatechange = function() {
+    //   if (xhr.readyState === 4 && xhr.status === 200) {
+    //       console.log(xhr.responseText)
+    //       setInfo(xhr.responseText)   
+    //   }
+    // };
+
+    // xhr.upload.addEventListener("progress", function(event) {
+    //   if(event.lengthComputable){
+    //       setProgress(Math.ceil(event.loaded * 100 / event.total) + "%")
+    //   }
+    // }, false);
+
+    // fd.append("file", file);
+    // xhr.open("POST", serverURL, true);
+    // xhr.send(fd); 
     console.log(curr, currFile)
-    let serverURL = "http://localhost:9093/manage/bi/uploadExcelTest"
-    const xhr = new XMLHttpRequest();
-    const fd = new FormData();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText)
-          setInfo(xhr.responseText)   
-      }
-    };
-
-    xhr.upload.addEventListener("progress", function(event) {
-      if(event.lengthComputable){
-          setProgress(Math.ceil(event.loaded * 100 / event.total) + "%")
-      }
-    }, false);
-
-    fd.append("file", currFile);
-    xhr.open("POST", serverURL, true);
-    xhr.send(fd); 
   }, [curr])
   
   const acceptedFileItems = acceptedFiles.map(file => {
